@@ -52,6 +52,27 @@ class Tests(unittest.TestCase):
             False
         )
 
+    def test_clear_visited(self):
+        num_cols = 10
+        num_rows = 10
+        m1 = Maze(0, 0, num_rows, num_cols, 10, 10)
+        m1._break_entrance_and_exit()
+        m1._break_walls_r(num_rows // 2, num_cols // 2)
+        visited_count = 0
+        for i in range(num_cols):
+            for j in range(num_rows):
+                if m1._cells[i][j].visited:
+                    visited_count += 1
+        self.assertEqual(visited_count, num_rows * num_cols)
+        m1._reset_cells_visited()
+        visited_count = 0
+        for i in range(num_cols):
+            for j in range(num_rows):
+                if m1._cells[i][j].visited:
+                    visited_count += 1
+        self.assertEqual(visited_count, 0)
+
+
 
 if __name__ == "__main__":
     unittest.main()

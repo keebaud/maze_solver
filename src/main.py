@@ -1,5 +1,6 @@
 from graphics import Window
 from maze import Maze
+import random
 
 def main():
     num_rows = 12
@@ -14,6 +15,10 @@ def main():
     maze = Maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win)
 
     maze._break_entrance_and_exit()
+
+    maze._break_walls_r(random.randint(0, num_rows - 1), random.randint(0, num_cols - 1))
+
+    maze._reset_cells_visited()
 
     win.wait_for_close()
 

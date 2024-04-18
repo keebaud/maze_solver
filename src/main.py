@@ -3,9 +3,9 @@ from maze import Maze
 import random
 
 def main():
-    num_rows = 12
-    num_cols = 16
-    margin = 50
+    num_rows = 32
+    num_cols = 40
+    margin = 20
     screen_x = 800
     screen_y = 600
     cell_size_x = (screen_x - 2 * margin) / num_cols
@@ -19,6 +19,8 @@ def main():
     maze._break_walls_r(random.randint(0, num_rows - 1), random.randint(0, num_cols - 1))
 
     maze._reset_cells_visited()
+
+    maze.solve()
 
     win.wait_for_close()
 
